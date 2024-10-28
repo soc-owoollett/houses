@@ -1,6 +1,10 @@
+
+"""Rutherford generative art."""
+
 import turtle as t
 import random
 
+points = 3670
 
 def random_color():
     """Generate a random color in hex format."""
@@ -8,24 +12,23 @@ def random_color():
 
 
 def create_moving_dots(num_dots):
+    """Create moving dots."""
     dots = []
     for i in range(num_dots):
         dot = t.Turtle()
         dot.shape('circle')
-        #dot.color(random_color())
         dot.color(random.choice(yellows))
         dot.penup()
         dot.speed(0)
         dot.goto(random.randint(-790, 790), random.randint(-590, 590))
-        #dot.dx = random.choice([-3, -2, -1, 1, 2, 3])
-        #dot.dy = random.choice([-3, -2, -1, 1, 2, 3])
-        dot.dx = random.randint(-50,80)
-        dot.dy = random.randint(-50,80)
+        dot.dx = random.randint(-50, 80)
+        dot.dy = random.randint(-50, 80)
         dots.append(dot)
     return dots
 
 
 def move_dots(dots):
+    """Move dots continuously."""
     for dot in dots:
         dot.setx(dot.xcor() + dot.dx)
         dot.sety(dot.ycor() + dot.dy)
@@ -39,21 +42,22 @@ def move_dots(dots):
     # Schedule the next update
     t.ontimer(lambda: move_dots(dots), 20)
 
+
 def create_moving_art():
+    """Create art and set up screen."""
     screen = t.Screen()
     screen.title("Moving Art")
     screen.bgcolor("#fff196")
-    t.pencolor("#f7dc0f")
-    t.write("Rutherford : 3670 pts", font=("Verdana", 30, "bold"), align="center")
+    t.pencolor("#0d0c00")
+    t.write(f"Rutherford : {points} pts",
+            font=("Verdana", 30, "bold"), align="center")
     screen.setup(width=800, height=600)
-    #screen.tracer(0)
 
     num_dots = 100
     dots = create_moving_dots(num_dots)
 
     # Schedule the first move
     move_dots(dots)
-
 
     # Keep the window open
     screen.mainloop()
@@ -69,4 +73,3 @@ t.shape("circle")
 t.color(random.choice(yellows))
 
 create_moving_art()
-

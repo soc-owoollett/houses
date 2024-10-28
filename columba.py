@@ -1,8 +1,14 @@
+
+"""Columba generative art."""
+
 from turtle import *
 import random
 
-def grow(length, decrease, angle, noise=0):
+# UPDATE POINTS HERE
+points = 76
 
+def grow(length, decrease, angle, noise=0):
+    """Grow tree."""
     if length > 10:
 
         fd(length)
@@ -26,7 +32,7 @@ def grow(length, decrease, angle, noise=0):
 
 
 def grow2(length, decrease, angle, noise=0):
-
+    """Grow 2."""
     if length > 10:
 
         fd(length)
@@ -46,24 +52,22 @@ def grow2(length, decrease, angle, noise=0):
         grow(new_length, decrease, angle, noise)
         left(angle_r)
 
-
         bk(length)
 
 
-#tracer(False)
 hideturtle()
 speed(0)
 bgcolor("#fa3c3c")
 
 penup()
-goto(0,250)
+goto(0, 250)
 pendown()
 
 pencolor("white")
-write("Columba : 76 pts", font=("Verdana", 30, "bold"), align="center")
+write(f"Columba : {points} pts", font=("Verdana", 30, "bold"), align="center")
 
 penup()
-goto(0,-275)
+goto(0, -275)
 pendown()
 
 width(1.6)
